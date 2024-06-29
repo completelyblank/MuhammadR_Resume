@@ -7,7 +7,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "react": "^18.0.0",
@@ -24,5 +26,7 @@
   },
   "engines": {
     "node": ">=14.0.0"
-  }
+  },
+  "author": "Muhammad Raza Khan",
+  "license": "MIT"
 }
