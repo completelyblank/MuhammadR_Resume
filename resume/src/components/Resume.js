@@ -20,6 +20,8 @@ import javaAlgo from './java_algo.png';
 import dataVis from './data_vis.png';
 import knn from './kNN.webp';
 import pak from './pak.jpg';
+import dataAnalysis from './data_analysis.png';
+import artShow from './artShow.png';
 
 const projects = [
   { id: 1, title: 'Multedio', description: 'Operating Systems Project. Multithreaded improved version of Adobe Lightroom.', bg: multedio, link: 'https://github.com/completelyblank/Multedio' },
@@ -29,6 +31,7 @@ const projects = [
   { id: 5, title: 'Axnos [Abandoned]', description: 'Flutter Game which had to be abandoned because of load on Flutter.', bg: axnos, link: 'https://github.com/completelyblank/Axnos' },
   { id: 6, title: 'Terra Incognita [Ongoing]', description: 'Pygame Simulation projects using ML Algorithms.', bg: terraInc, link: 'https://github.com/completelyblank/Terra-Incognita' },
   { id: 7, title: 'Blank Weather', description: 'API Caller Project using Open Weather API.', bg: weather, link: 'https://github.com/completelyblank/Blank-Weather' },
+  { id: 8, title: 'Art Showcase', description: 'Firebase Project to showcase my art designs.', bg: artShow, link: 'https://art-showcase-93cbc.web.app/' },
 ];
 
 const certifications = [
@@ -36,6 +39,7 @@ const certifications = [
   { id: 2, title: 'Frontend Development Certification', description: 'freeCodeCamp Frontend Development.', bg: frontendDev, link: 'https://www.freecodecamp.org/fcc76c7dae4-cf43-4d34-a299-348d8dd71275' },
   { id: 3, title: 'Legacy JavaScript Algorithms Certification', description: 'freeCodeCamp JavaScript Development.', bg: javaAlgo, link: 'https://www.freecodecamp.org/fcc76c7dae4-cf43-4d34-a299-348d8dd71275' },
   { id: 4, title: 'Data Visualization Certification', description: 'freeCodeCamp D3 Visualization.', bg: dataVis, link: 'https://www.freecodecamp.org/fcc76c7dae4-cf43-4d34-a299-348d8dd71275' },
+  { id: 5, title: 'Data Analysis Certification', description: 'freeCodeCamp Data Analysis with Python.', bg: dataAnalysis, link: 'https://www.freecodecamp.org/fcc76c7dae4-cf43-4d34-a299-348d8dd71275' },
 ];
 
 const articles = [
@@ -55,11 +59,11 @@ const Resume = () => {
   const nextArticle = () => setCurrentArticle((prev) => (prev + 1) % articles.length);
   const prevArticle = () => setCurrentArticle((prev) => (prev - 1 + articles.length) % articles.length);
 
-  const { ref: skillsRef, inView: skillsInView } = useInView({ triggerOnce: false, threshold: 0.1 });
-  const { ref: hobbiesRef, inView: hobbiesInView } = useInView({ triggerOnce: false, threshold: 0.1 });
-  const { ref: projectsRef, inView: projectsInView } = useInView({ triggerOnce: false, threshold: 0.1 });
-  const { ref: certificationsRef, inView: certificationsInView } = useInView({ triggerOnce: false, threshold: 0.1 });
-  const { ref: articlesRef, inView: articlesInView } = useInView({ triggerOnce: false, threshold: 0.1 });
+  const { ref: skillsRef, inView: skillsInView } = useInView({ triggerOnce: true, threshold: 0.1 });
+  const { ref: hobbiesRef, inView: hobbiesInView } = useInView({ triggerOnce: true, threshold: 0.1 });
+  const { ref: projectsRef, inView: projectsInView } = useInView({ triggerOnce: true, threshold: 0.1 });
+  const { ref: certificationsRef, inView: certificationsInView } = useInView({ triggerOnce: true, threshold: 0.1 });
+  const { ref: articlesRef, inView: articlesInView } = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
     <div className="p-4 md:p-8 min-h-screen text-white">
@@ -97,11 +101,13 @@ const Resume = () => {
             <h2 className="text-4xl md:text-6xl text-gray-400 section-header floresta text-right">Skills</h2>
             <ul className="list-disc list-inside mt-4 text-gray-500">
               <li>Web Dev (HTML + CSS + Vanilla JS)</li>
-              <li>ML (Classification + Training Algorithms) [Beginner]</li>
-              <li>Cyber Security [Beginner]</li>
-              <li>Full Stack (React + Express + MongoDB + NodeJS)</li>
-              <li>Creative Coding (Pygame + P5.js)</li>
-              <li>Programming (C++ + Python)</li>
+              <li>React Dev (Vite + CRA)</li>
+              <li>Mobile Dev (Flutter + Kotlin)</li>
+              <li>Python (Django + Flask)</li>
+              <li>Data Structures + Algorithms</li>
+              <li>Object Oriented Programming</li>
+              <li>Databases (MySQL + MongoDB + SQLite)</li>
+              <li>Machine Learning</li>
             </ul>
           </div>
         </div>
@@ -112,59 +118,91 @@ const Resume = () => {
           <div className="flex-1">
             <h2 className="text-4xl md:text-6xl text-gray-400 section-header floresta">Hobbies</h2>
             <ul className="list-disc list-inside mt-4 text-gray-500">
-              <li>Writing</li>
-              <li>Gaming</li>
-              <li>Watching Movies + TV Series + Anime</li>
-              <li>Doing Science</li>
-              <li>History Buff</li>
+              <li>Table Tennis</li>
+              <li>Drawing</li>
+              <li>Digital Art</li>
+              <li>Video Games</li>
             </ul>
           </div>
           <img src={hobbiesIcon} alt="Hobbies Icon" className="w-32 h-32 md:w-64 md:h-64 ml-4" />
         </div>
       </section>
 
-      <section ref={projectsRef} className={`mt-8 glassy-div flex flex-col items-center transition-opacity duration-1000 ${projectsInView ? 'opacity-100' : 'opacity-0'}`}>
-        <h2 className="text-4xl md:text-6xl text-gray-400 section-header floresta">Projects</h2>
-        <div className="mt-4 flex items-center justify-center">
-          <button onClick={prevProject} className="px-4 py-2 m-2 bg-gray-700 hover:bg-gray-600 text-white rounded">Previous</button>
-          <div className="w-64 h-64 bg-cover bg-center rounded-lg border-4 border-gray-800" style={{ backgroundImage: `url(${projects[currentProject].bg})` }}>
-            <div className="flex flex-col justify-center items-center h-full p-4 bg-black bg-opacity-50 rounded-lg">
-              <h3 className="text-2xl text-gray-100 mb-2">{projects[currentProject].title}</h3>
-              <p className="text-gray-400 mb-4">{projects[currentProject].description}</p>
-              <a href={projects[currentProject].link} target="_blank" rel="noopener noreferrer" className="text-blue-500">View Project</a>
+      <section ref={projectsRef} className={`mt-8 glassy-div transition-opacity duration-1000 ${projectsInView ? 'opacity-100' : 'opacity-0'}`}>
+        <div className="flex flex-col items-center">
+          <h2 className="text-4xl md:text-6xl text-gray-400 section-header floresta text-center">Projects</h2>
+          <div className="flex justify-center mt-4">
+            <button onClick={prevProject} className="bg-transparent text-gray-500 hover:text-gray-600 p-2 rounded-md">←</button>
+            <div className="w-96 h-64 md:w-128 md:h-80 relative">
+              {projects.map((project, index) => (
+                <div
+                  key={project.id}
+                  className={`absolute inset-0 transition-opacity duration-1000 ${index === currentProject ? 'opacity-100' : 'opacity-0'}`}
+                  style={{ backgroundImage: `url(${project.bg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+                >
+                  <a href={project.link} target="_blank" rel="noopener noreferrer">
+                    <div className="bg-black bg-opacity-70 p-4 rounded-lg h-full flex flex-col justify-center">
+                      <h3 className="text-2xl md:text-4xl text-white">{project.title}</h3>
+                      <p className="text-lg md:text-2xl text-gray-300 mt-2">{project.description}</p>
+                    </div>
+                  </a>
+                </div>
+              ))}
             </div>
+            <button onClick={nextProject} className="bg-transparent text-gray-500 hover:text-gray-600 p-2 rounded-md">→</button>
           </div>
-          <button onClick={nextProject} className="px-4 py-2 m-2 bg-gray-700 hover:bg-gray-600 text-white rounded">Next</button>
         </div>
       </section>
 
-      <section ref={certificationsRef} className={`mt-8 glassy-div flex flex-col items-center transition-opacity duration-1000 ${certificationsInView ? 'opacity-100' : 'opacity-0'}`}>
-        <h2 className="text-4xl md:text-6xl text-gray-400 section-header floresta">Certifications</h2>
-        <div className="mt-4 flex items-center justify-center">
-          <button onClick={prevCertification} className="px-4 py-2 m-2 bg-gray-700 hover:bg-gray-600 text-white rounded">Previous</button>
-          <div className="w-64 h-64 bg-cover bg-center rounded-lg border-4 border-gray-800" style={{ backgroundImage: `url(${certifications[currentCertification].bg})` }}>
-            <div className="flex flex-col justify-center items-center h-full p-4 bg-black bg-opacity-50 rounded-lg">
-              <h3 className="text-2xl text-gray-100 mb-2">{certifications[currentCertification].title}</h3>
-              <p className="text-gray-400 mb-4">{certifications[currentCertification].description}</p>
-              <a href={certifications[currentCertification].link} target="_blank" rel="noopener noreferrer" className="text-blue-500">View Certification</a>
+      <section ref={certificationsRef} className={`mt-8 glassy-div transition-opacity duration-1000 ${certificationsInView ? 'opacity-100' : 'opacity-0'}`}>
+        <div className="flex flex-col items-center">
+          <h2 className="text-4xl md:text-6xl text-gray-400 section-header floresta text-center">Certifications</h2>
+          <div className="flex justify-center mt-4">
+            <button onClick={prevCertification} className="bg-transparent text-gray-500 hover:text-gray-600 p-2 rounded-md">←</button>
+            <div className="w-96 h-64 md:w-128 md:h-80 relative">
+              {certifications.map((certification, index) => (
+                <div
+                  key={certification.id}
+                  className={`absolute inset-0 transition-opacity duration-1000 ${index === currentCertification ? 'opacity-100' : 'opacity-0'}`}
+                  style={{ backgroundImage: `url(${certification.bg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+                >
+                  <a href={certification.link} target="_blank" rel="noopener noreferrer">
+                    <div className="bg-black bg-opacity-70 p-4 rounded-lg h-full flex flex-col justify-center">
+                      <h3 className="text-2xl md:text-4xl text-white">{certification.title}</h3>
+                      <p className="text-lg md:text-2xl text-gray-300 mt-2">{certification.description}</p>
+                    </div>
+                  </a>
+                </div>
+              ))}
             </div>
+            <button onClick={nextCertification} className="bg-transparent text-gray-500 hover:text-gray-600 p-2 rounded-md">→</button>
           </div>
-          <button onClick={nextCertification} className="px-4 py-2 m-2 bg-gray-700 hover:bg-gray-600 text-white rounded">Next</button>
         </div>
       </section>
 
-      <section ref={articlesRef} className={`mt-8 glassy-div flex flex-col items-center transition-opacity duration-1000 ${articlesInView ? 'opacity-100' : 'opacity-0'}`}>
-        <h2 className="text-4xl md:text-6xl text-gray-400 section-header floresta">Articles</h2>
-        <div className="mt-4 flex items-center justify-center">
-          <button onClick={prevArticle} className="px-4 py-2 m-2 bg-gray-700 hover:bg-gray-600 text-white rounded">Previous</button>
-          <div className="w-64 h-64 bg-cover bg-center rounded-lg border-4 border-gray-800" style={{ backgroundImage: `url(${articles[currentArticle].bg})` }}>
-            <div className="flex flex-col justify-center items-center h-full p-4 bg-black bg-opacity-50 rounded-lg">
-              <h3 className="text-2xl text-gray-100 mb-2">{articles[currentArticle].title}</h3>
-              <p className="text-gray-400 mb-4">{articles[currentArticle].description}</p>
-              <a href={articles[currentArticle].link} target="_blank" rel="noopener noreferrer" className="text-blue-500">Read Article</a>
+      <section ref={articlesRef} className={`mt-8 glassy-div transition-opacity duration-1000 ${articlesInView ? 'opacity-100' : 'opacity-0'}`}>
+        <div className="flex flex-col items-center">
+          <h2 className="text-4xl md:text-6xl text-gray-400 section-header floresta text-center">Articles</h2>
+          <div className="flex justify-center mt-4">
+            <button onClick={prevArticle} className="bg-transparent text-gray-500 hover:text-gray-600 p-2 rounded-md">←</button>
+            <div className="w-96 h-64 md:w-128 md:h-80 relative">
+              {articles.map((article, index) => (
+                <div
+                  key={article.id}
+                  className={`absolute inset-0 transition-opacity duration-1000 ${index === currentArticle ? 'opacity-100' : 'opacity-0'}`}
+                  style={{ backgroundImage: `url(${article.bg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+                >
+                  <a href={article.link} target="_blank" rel="noopener noreferrer">
+                    <div className="bg-black bg-opacity-70 p-4 rounded-lg h-full flex flex-col justify-center">
+                      <h3 className="text-2xl md:text-4xl text-white">{article.title}</h3>
+                      <p className="text-lg md:text-2xl text-gray-300 mt-2">{article.description}</p>
+                    </div>
+                  </a>
+                </div>
+              ))}
             </div>
+            <button onClick={nextArticle} className="bg-transparent text-gray-500 hover:text-gray-600 p-2 rounded-md">→</button>
           </div>
-          <button onClick={nextArticle} className="px-4 py-2 m-2 bg-gray-700 hover:bg-gray-600 text-white rounded">Next</button>
         </div>
       </section>
     </div>
